@@ -129,6 +129,9 @@ def download_grabpl_step():
     return {
         "name": "grabpl",
         "image": images["curl"],
+        "environment": {
+            "GITHUB_TOKEN": from_secret("github_token"),
+        },
         "commands": [
             "mkdir -p bin",
             "curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/{}/grabpl".format(

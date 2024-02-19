@@ -507,6 +507,9 @@ steps:
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
   image: byrnedo/alpine-curl:0.1.8
   name: grabpl
 - commands:
@@ -907,6 +910,9 @@ steps:
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
   image: byrnedo/alpine-curl:0.1.8
   name: grabpl
 - commands:
@@ -1836,6 +1842,9 @@ steps:
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
   image: byrnedo/alpine-curl:0.1.8
   name: grabpl
 - commands:
@@ -2333,6 +2342,9 @@ steps:
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
   image: byrnedo/alpine-curl:0.1.8
   name: grabpl
 - commands:
@@ -2671,6 +2683,9 @@ steps:
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
   image: byrnedo/alpine-curl:0.1.8
   name: grabpl
 - commands:
@@ -4139,6 +4154,9 @@ steps:
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
+  environment:
+    GITHUB_TOKEN:
+      from_secret: github_token
   image: byrnedo/alpine-curl:0.1.8
   name: grabpl
 - commands:
@@ -4920,6 +4938,6 @@ kind: secret
 name: gcr_credentials
 ---
 kind: signature
-hmac: c652cd78292dfef8af716ffe6da6620cf86666175dbd56e05274347856f12371
+hmac: d4f4a73f125105a65f48f9ac60d25eadf0595fb13db75a0767ccbe3e277d6cbf
 
 ...
