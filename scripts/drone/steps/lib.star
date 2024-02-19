@@ -393,7 +393,7 @@ def playwright_e2e_report_upload():
             '-H "Authorization: Bearer ${GITHUB_TOKEN}" ' +
             '-H "X-GitHub-Api-Version: 2022-11-28" ' +
             "https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments " +
-            '"{\\"state\\":\\"success\\",\\"target_url\\":\\"${E2E_PLAYWRIGHT_REPORT_URL}\\", \\"description\\": \\"Click on the details to see the Playwright report\\", \\"context\\": \\"e2e_artifacts\\"}"',
+            '"{\\"state\\":\\"success\\", \\"target_url\\":\\"$${E2E_PLAYWRIGHT_REPORT_URL}\\", \\"description\\": \\"Click on the details to see the Playwright report\\", \\"context\\": \\"e2e_artifacts\\"}"',
         ],
     }
 
