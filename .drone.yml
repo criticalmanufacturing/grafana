@@ -503,8 +503,8 @@ steps:
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
-    -H "application/vnd.github.text+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"#Hello\"}"'
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"text\":\"#Hello\"}"'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -904,8 +904,8 @@ steps:
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
-    -H "application/vnd.github.text+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"#Hello\"}"'
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"text\":\"#Hello\"}"'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -1834,8 +1834,8 @@ steps:
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
-    -H "application/vnd.github.text+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"#Hello\"}"'
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"text\":\"#Hello\"}"'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -2332,8 +2332,8 @@ steps:
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
-    -H "application/vnd.github.text+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"#Hello\"}"'
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"text\":\"#Hello\"}"'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -2671,8 +2671,8 @@ steps:
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
-    -H "application/vnd.github.text+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"#Hello\"}"'
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"text\":\"#Hello\"}"'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -4140,8 +4140,8 @@ steps:
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
-    -H "application/vnd.github.text+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"#Hello\"}"'
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"text\":\"#Hello\"}"'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -4926,6 +4926,6 @@ kind: secret
 name: gcr_credentials
 ---
 kind: signature
-hmac: 2d5f2b35942e4e129abe265843b2d3f44ced4c2f07589c49c0891e0febf71ccc
+hmac: acdaf9d80b8f73c181927382a6d4b8c341ea5835e40383bbc8304d942937bd7a
 
 ...
