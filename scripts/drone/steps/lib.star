@@ -144,7 +144,7 @@ def download_grabpl_step():
             '-H "Accept: application/vnd.github+json" ' +
             '-H "Authorization: Bearer $${GITHUB_TOKEN}" ' +
             '-H "X-GitHub-Api-Version: 2022-11-28" -d ' +
-            '"{\\"body\\":\\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html) to browse Playwright report\\"}"'
+            '"{\\"body\\":\\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html) to browse Playwright report\\"}"'
             # '"{\\"state\\":\\"success\\", \\"target_url\\":\\"$${E2E_PLAYWRIGHT_REPORT_URL}\\", \\"description\\": \\"Click on the details to see the Playwright report\\", \\"context\\": \\"e2e_artifacts\\"}"',
         ],
     }

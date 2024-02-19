@@ -504,7 +504,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
     to browse Playwright report\"}"'
   environment:
     GITHUB_TOKEN:
@@ -906,7 +906,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
     to browse Playwright report\"}"'
   environment:
     GITHUB_TOKEN:
@@ -1837,7 +1837,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
     to browse Playwright report\"}"'
   environment:
     GITHUB_TOKEN:
@@ -2336,7 +2336,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
     to browse Playwright report\"}"'
   environment:
     GITHUB_TOKEN:
@@ -2676,7 +2676,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
     to browse Playwright report\"}"'
   environment:
     GITHUB_TOKEN:
@@ -4146,7 +4146,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
+    -H "X-GitHub-Api-Version: 2022-11-28" -d "{\"body\":\"❌ Click [here](https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html)
     to browse Playwright report\"}"'
   environment:
     GITHUB_TOKEN:
@@ -4932,6 +4932,6 @@ kind: secret
 name: gcr_credentials
 ---
 kind: signature
-hmac: 66ead27f78300c853b6ce36f6093f9187dba0796fb9cf187f83a9ff26cb58960
+hmac: f36c257795319bc5a991d140c69bec2f81ca90434781fbf31fbab01554113fb2
 
 ...
