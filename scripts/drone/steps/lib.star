@@ -385,7 +385,7 @@ def playwright_e2e_report_upload():
             "gcloud auth activate-service-account --key-file=/tmp/gcpkey_upload_artifacts.json",
             "gsutil cp -r ./playwright-report/. gs://releng-pipeline-artifacts-dev/${DRONE_BUILD_NUMBER}/playwright-report",
             "export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/${DRONE_BUILD_NUMBER}/playwright-report/index.html",
-            'echo "E2E Playwright report uploaded to:',
+            'echo "E2E Playwright report uploaded to:"',
             'echo "$E2E_PLAYWRIGHT_REPORT_URL"',
             "curl -L " +
             "-X POST" +
