@@ -502,8 +502,8 @@ steps:
   - curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/v3.0.50/grabpl
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
-  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments-H
-    "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
+  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
@@ -902,8 +902,8 @@ steps:
   - curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/v3.0.50/grabpl
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
-  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments-H
-    "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
+  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
@@ -1831,8 +1831,8 @@ steps:
   - curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/v3.0.50/grabpl
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
-  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments-H
-    "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
+  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
@@ -2328,8 +2328,8 @@ steps:
   - curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/v3.0.50/grabpl
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
-  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments-H
-    "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
+  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
@@ -2666,8 +2666,8 @@ steps:
   - curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/v3.0.50/grabpl
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
-  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments-H
-    "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
+  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
@@ -4134,8 +4134,8 @@ steps:
   - curl -fL -o bin/grabpl https://grafana-downloads.storage.googleapis.com/grafana-build-pipeline/v3.0.50/grabpl
   - chmod +x bin/grabpl
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
-  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments-H
-    "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
+  - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
+    -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}"
     -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
     \"description\": \"Click on the details to see the Playwright report\", \"context\":
     \"e2e_artifacts\"}"'
@@ -4920,6 +4920,6 @@ kind: secret
 name: gcr_credentials
 ---
 kind: signature
-hmac: 4180ef0072234ae0935dcc2ba36f8567a811223a9cbc3d127934bec265e06130
+hmac: c652cd78292dfef8af716ffe6da6620cf86666175dbd56e05274347856f12371
 
 ...
