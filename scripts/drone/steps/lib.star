@@ -135,6 +135,13 @@ def download_grabpl_step():
                 grabpl_version,
             ),
             "chmod +x bin/grabpl",
+            "export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html",
+            "curl -L " +
+            "-X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments" +
+            '-H "Accept: application/vnd.github+json" ' +
+            '-H "Authorization: Bearer ${GITHUB_TOKEN}" ' +
+            '-H "X-GitHub-Api-Version: 2022-11-28" ' +
+            '"{\\"state\\":\\"success\\", \\"target_url\\":\\"$${E2E_PLAYWRIGHT_REPORT_URL}\\", \\"description\\": \\"Click on the details to see the Playwright report\\", \\"context\\": \\"e2e_artifacts\\"}"',
         ],
     }
 
@@ -392,6 +399,7 @@ def playwright_e2e_report_upload():
             '-H "Accept: application/vnd.github+json" ' +
             '-H "Authorization: Bearer ${GITHUB_TOKEN}" ' +
             '-H "X-GitHub-Api-Version: 2022-11-28" ' +
+            "https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments" +
             '"{\\"state\\":\\"success\\", \\"target_url\\":\\"$${E2E_PLAYWRIGHT_REPORT_URL}\\", \\"description\\": \\"Click on the details to see the Playwright report\\", \\"context\\": \\"e2e_artifacts\\"}"',
         ],
     }
