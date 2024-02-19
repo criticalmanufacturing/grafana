@@ -504,9 +504,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
-    \"description\": \"Click on the details to see the Playwright report\", \"context\":
-    \"e2e_artifacts\"}"'
+    -H "X-GitHub-Api-Version: 2022-11-28" {"body":"Hello"}'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -907,9 +905,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
-    \"description\": \"Click on the details to see the Playwright report\", \"context\":
-    \"e2e_artifacts\"}"'
+    -H "X-GitHub-Api-Version: 2022-11-28" {"body":"Hello"}'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -1839,9 +1835,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
-    \"description\": \"Click on the details to see the Playwright report\", \"context\":
-    \"e2e_artifacts\"}"'
+    -H "X-GitHub-Api-Version: 2022-11-28" {"body":"Hello"}'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -2339,9 +2333,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
-    \"description\": \"Click on the details to see the Playwright report\", \"context\":
-    \"e2e_artifacts\"}"'
+    -H "X-GitHub-Api-Version: 2022-11-28" {"body":"Hello"}'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -2680,9 +2672,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
-    \"description\": \"Click on the details to see the Playwright report\", \"context\":
-    \"e2e_artifacts\"}"'
+    -H "X-GitHub-Api-Version: 2022-11-28" {"body":"Hello"}'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -4151,9 +4141,7 @@ steps:
   - export E2E_PLAYWRIGHT_REPORT_URL=https://storage.googleapis.com/releng-pipeline-artifacts-dev/161658/playwright-report/index.html
   - 'curl -L -X POST https://api.github.com/repos/grafana/grafana/issues/${DRONE_PULL_REQUEST}/comments
     -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $${GITHUB_TOKEN}"
-    -H "X-GitHub-Api-Version: 2022-11-28" "{\"state\":\"success\", \"target_url\":\"$${E2E_PLAYWRIGHT_REPORT_URL}\",
-    \"description\": \"Click on the details to see the Playwright report\", \"context\":
-    \"e2e_artifacts\"}"'
+    -H "X-GitHub-Api-Version: 2022-11-28" {"body":"Hello"}'
   environment:
     GITHUB_TOKEN:
       from_secret: github_token
@@ -4938,6 +4926,6 @@ kind: secret
 name: gcr_credentials
 ---
 kind: signature
-hmac: 66c816b889d8ca4ba02fccf37e808cf73537b1bf6c3c856d8b9e5ddb062d9671
+hmac: e8865267b998425a1b61ee696adfad3e4451364e1417ac220fa78b1fbadb3f98
 
 ...
