@@ -8,6 +8,46 @@ ARG GO_IMAGE=golang:1.21.5-alpine3.18
 ARG GO_SRC=go-builder
 ARG JS_SRC=js-builder
 
+################### PLUGIN COMPILATION - Start ###################
+
+FROM golang:alpine3.16 as im_go
+
+USER root
+
+COPY ./plugins/criticalmanufacturing-grpc-datasource /go/src
+WORKDIR /go/src
+
+### Compiling backend
+
+RUN go "build" "-o" "dist/cmf_backend_grpc_plugin_linux_amd64" "-ldflags" "-w -s -extldflags \"-static\" -X 'github.com/grafana/grafana-plugin-sdk-go/build.buildInfoJSON={\"time\":1677258377824,\"version\":\"1.0.0\",\"repo\":\"CMF\",\"branch\":\"Deploy\",\"hash\":\"83d7fe05b465008972bea160643473286f89af9e6\"}' -X 'main.version=1.0.0' -X 'main.branch=Deploy' -X 'main.commit=abcd'" "./pkg"
+
+### Compiling frontend
+
+FROM ubuntu:20.04 as im_node
+USER root
+
+WORKDIR /usr/src
+COPY ./plugins/criticalmanufacturing-grpc-datasource .
+
+COPY ./public.gpg.key /opt/public.gpg.key
+
+RUN apt-get update \
+    && apt-get install -y curl gnupg \
+    && apt-key add /opt/public.gpg.key \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN apt update
+RUN apt install curl -y
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update
+RUN apt-get install yarn -y
+RUN yarn install
+RUN yarn build
+
+################### PLUGIN COMPILATION - End ###################
+
 FROM --platform=${JS_PLATFORM} ${JS_IMAGE} as js-builder
 
 ENV NODE_OPTIONS=--max_old_space_size=8000
@@ -93,7 +133,11 @@ FROM ${JS_SRC} as js-src
 # Final stage
 FROM ${BASE_IMAGE}
 
-LABEL maintainer="Grafana Labs <hello@grafana.com>"
+LABEL name="grafana" \
+      maintainer="contact@criticalmanufacturing.com" \
+      vendor="CRITICAL MANUFACTURING, S.A." \
+      summary="Grafana container image" \
+      description="Grafana container image"
 
 ARG GF_UID="472"
 ARG GF_GID="0"
@@ -110,7 +154,7 @@ WORKDIR $GF_PATHS_HOME
 
 # Install dependencies
 RUN if grep -i -q alpine /etc/issue; then \
-      apk add --no-cache ca-certificates bash curl tzdata musl-utils && \
+    apk add --no-cache ca-certificates bash curl tzdata musl-utils && \
       apk info -vv | sort; \
     elif grep -i -q ubuntu /etc/issue; then \
       DEBIAN_FRONTEND=noninteractive && \
@@ -173,6 +217,25 @@ COPY --from=js-src /tmp/grafana/public ./public
 COPY --from=go-src /tmp/grafana/LICENSE ./
 
 EXPOSE 3000
+###################### HANDLING CMF SPECIFIC DATA - START ######################
+
+### Env variables for grafana plugins
+ENV GF_INSTALL_PLUGINS="" \
+    GF_PATHS_CONFIG=/etc/grafana/grafana.ini \
+    GF_PATHS_DATA=/var/lib/grafana \
+    GF_PATHS_HOME=/usr/share/grafana \
+    GF_PATHS_LOGS=/var/log/grafana \
+    GF_PATHS_PLUGINS=/var/lib/grafana/plugins \
+    GF_PATHS_PROVISIONING=/etc/grafana/provisioning \
+    GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=criticalmanufacturing-grpc-datasource
+
+### Copy CMF plugin to the plugin directory
+RUN mkdir -p /opt/cmf/plugin/criticalmanufacturing-grpc-datasource
+COPY --from=im_node /usr/src/dist/ /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource
+COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource/
+RUN chmod u+x /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
+
+###################### HANDLING CMF SPECIFIC DATA - END ######################
 
 ARG RUN_SH=./packaging/docker/run.sh
 
