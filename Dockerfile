@@ -242,4 +242,19 @@ ARG RUN_SH=./packaging/docker/run.sh
 COPY ${RUN_SH} /run.sh
 
 USER "$GF_UID"
-ENTRYPOINT [ "/run.sh" ]
+
+# https://learn.microsoft.com/en-us/dotnet/core/runtime-config/globalization
+# avoid our CMFEntrypoint to throw this error: Couldn't find a valid ICU package installed on the system
+# caused by missing package libicu63 in this image
+# this need to be set as environment variable on all base images
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+
+# License
+COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /licenses /licenses
+# CmfEntrypoint
+COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
+
+ENTRYPOINT /usr/share/CmfEntrypoint/CmfEntrypoint "/bin/sh /run.sh" \
+       --process-secrets \
+       --layer="grafana" \
+       --target-directory="/etc/grafana/provisioning"
