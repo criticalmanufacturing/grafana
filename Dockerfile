@@ -241,7 +241,7 @@ ARG RUN_SH=./packaging/docker/run.sh
 
 COPY ${RUN_SH} /run.sh
 
-USER "$GF_UID"
+USER root
 
 # https://learn.microsoft.com/en-us/dotnet/core/runtime-config/globalization
 # avoid our CMFEntrypoint to throw this error: Couldn't find a valid ICU package installed on the system
@@ -268,6 +268,13 @@ RUN apt-get update \
     && apt-get install -y cmfentrypoint=11.0.0.* \
     && rm -rf /var/lib/apt/lists/* \
     && rm /etc/apt/sources.list.d/cmf.list
+
+# Permissions to add custom certificates
+RUN chmod g+rw -R /usr/local/share/ca-certificates/
+RUN chmod 644 /etc/ssl/certs/ca.pem && \
+    update-ca-certificates
+
+USER "$GF_UID"
 
 ENTRYPOINT /usr/share/CmfEntrypoint/CmfEntrypoint "/bin/sh /run.sh" \
        --process-secrets \
