@@ -253,8 +253,13 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /licenses /licenses
 # CmfEntrypoint
 # COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
+
+# COPY ./cmf.pem /etc/ssl/certs/
+COPY ./cmf-dev.gpg.key /opt/public.gpg.key
+
 RUN apt-get update \
     && apt-get install -y gnupg wget \
+    && apt-key add /opt/public.gpg.key \
     && wget http://ftp.de.debian.org/debian/pool/main/i/icu/libicu67_67.1-7_amd64.deb \
     && dpkg -i libicu67_67.1-7_amd64.deb \
     && rm libicu67_67.1-7_amd64.deb \
@@ -268,9 +273,9 @@ RUN apt-get update \
     && rm /etc/apt/sources.list.d/cmf.list
 
 # Permissions to add custom certificates
-RUN chmod g+rw -R /usr/local/share/ca-certificates/
-RUN chmod 644 /etc/ssl/certs/ca.pem && \
-    update-ca-certificates
+# RUN chmod g+rw -R /usr/local/share/ca-certificates/
+# RUN chmod 644 /etc/ssl/certs/cmf.pem && \
+#    update-ca-certificates
 
 USER "$GF_UID"
 
