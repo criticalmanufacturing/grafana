@@ -139,7 +139,7 @@ LABEL name="grafana" \
       summary="Grafana container image" \
       description="Grafana container image"
 
-ARG GF_UID="472"
+ARG GF_UID="1001"
 ARG GF_GID="0"
 
 ENV PATH="/usr/share/grafana/bin:$PATH" \
