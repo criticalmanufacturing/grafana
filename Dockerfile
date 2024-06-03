@@ -255,8 +255,6 @@ COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /licens
 # COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
 RUN apt-get update \
     && apt-get install -y gnupg wget \
-    #&& apt-get install -y python3-pip gettext-base gnupg wget curl nano procps \
-    && apt-key add /opt/public.gpg.key \
     && wget http://ftp.de.debian.org/debian/pool/main/i/icu/libicu67_67.1-7_amd64.deb \
     && dpkg -i libicu67_67.1-7_amd64.deb \
     && rm libicu67_67.1-7_amd64.deb \
