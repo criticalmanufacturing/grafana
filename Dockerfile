@@ -220,7 +220,7 @@ EXPOSE 3000
 ###################### HANDLING CMF SPECIFIC DATA - START ######################
 
 ### Env variables for grafana plugins
-ENV GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource \
+ENV GF_INSTALL_PLUGINS=retrodaredevil-wildgraphql-datasource \
     GF_PATHS_CONFIG=/etc/grafana/grafana.ini \
     GF_PATHS_DATA=/var/lib/grafana \
     GF_PATHS_HOME=/usr/share/grafana \
