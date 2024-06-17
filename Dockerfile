@@ -232,8 +232,8 @@ ENV GF_INSTALL_PLUGINS=retrodaredevil-wildgraphql-datasource \
 ### Copy CMF plugin to the plugin directory
 RUN mkdir -p /opt/cmf/plugin/criticalmanufacturing-grpc-datasource
 COPY --from=im_node /usr/src/dist/ /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource
-COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource/
-RUN chmod u+x /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
+COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /opt/cmf/plugin/criticalmanufacturing-grpc-datasource/
+RUN chmod u+x /opt/cmf/plugin/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
 
 ###################### HANDLING CMF SPECIFIC DATA - END ######################
 
@@ -288,5 +288,6 @@ USER "$GF_UID"
 
 ENTRYPOINT /usr/share/CmfEntrypoint/CmfEntrypoint "/bin/sh /run.sh" \
        --process-secrets \
+       --exe-script "cp -rf /opt/cmf/plugin/criticalmanufacturing-grpc-datasource /var/lib/grafana/plugins" \
        --layer="grafana" \
        --target-directory="/etc/grafana/provisioning"
