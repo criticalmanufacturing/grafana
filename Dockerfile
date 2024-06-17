@@ -231,7 +231,7 @@ ENV GF_INSTALL_PLUGINS=retrodaredevil-wildgraphql-datasource \
 
 ### Copy CMF plugin to the plugin directory
 RUN mkdir -p /opt/cmf/plugin/criticalmanufacturing-grpc-datasource
-COPY --from=im_node /usr/src/dist/ /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource
+COPY --from=im_node /usr/src/dist/ /opt/cmf/plugin/criticalmanufacturing-grpc-datasource
 COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /opt/cmf/plugin/criticalmanufacturing-grpc-datasource/
 RUN chmod u+x /opt/cmf/plugin/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
 
