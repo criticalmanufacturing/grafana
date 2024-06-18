@@ -288,6 +288,6 @@ USER "$GF_UID"
 
 ENTRYPOINT /usr/share/CmfEntrypoint/CmfEntrypoint "/bin/sh /run.sh" \
        --process-secrets \
-       --exec-script "cp -rf /opt/cmf/plugin/criticalmanufacturing-grpc-datasource /var/lib/grafana/plugins" \
+       --exec-script "cp -rf /opt/cmf/plugin/criticalmanufacturing-grpc-datasource /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource" \
        --layer="grafana" \
        --target-directory="/etc/grafana/provisioning"
