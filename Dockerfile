@@ -225,7 +225,7 @@ ENV GF_INSTALL_PLUGINS= \
     GF_PATHS_DATA=/var/lib/grafana \
     GF_PATHS_HOME=/usr/share/grafana \
     GF_PATHS_LOGS=/var/log/grafana \
-    GF_PATHS_PLUGINS=/var/lib/grafana/plugins \
+    GF_PATHS_PLUGINS=/data/grafana/plugins \
     GF_PATHS_PROVISIONING=/etc/grafana/provisioning \
     GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=criticalmanufacturing-grpc-datasource
 
@@ -289,6 +289,5 @@ USER "$GF_UID"
 
 ENTRYPOINT /usr/share/CmfEntrypoint/CmfEntrypoint "/bin/sh /run.sh" \
        --process-secrets \
-       --exec-script "mkdir -p /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource; cp -rf /opt/cmf/plugin/criticalmanufacturing-grpc-datasource /var/lib/grafana/plugins" \
        --layer="grafana" \
        --target-directory="/etc/grafana/provisioning"
