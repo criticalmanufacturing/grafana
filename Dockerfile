@@ -147,7 +147,7 @@ ENV PATH="/usr/share/grafana/bin:$PATH" \
     GF_PATHS_DATA="/var/lib/grafana" \
     GF_PATHS_HOME="/usr/share/grafana" \
     GF_PATHS_LOGS="/var/log/grafana" \
-    GF_PATHS_PLUGINS="/var/lib/grafana/plugins" \
+    GF_PATHS_PLUGINS="/data/grafana/plugins" \
     GF_PATHS_PROVISIONING="/etc/grafana/provisioning"
 
 WORKDIR $GF_PATHS_HOME
@@ -220,7 +220,7 @@ EXPOSE 3000
 ###################### HANDLING CMF SPECIFIC DATA - START ######################
 
 ### Env variables for grafana plugins
-ENV GF_INSTALL_PLUGINS=retrodaredevil-wildgraphql-datasource \
+ENV GF_INSTALL_PLUGINS= \
     GF_PATHS_CONFIG=/etc/grafana/grafana.ini \
     GF_PATHS_DATA=/var/lib/grafana \
     GF_PATHS_HOME=/usr/share/grafana \
@@ -230,10 +230,11 @@ ENV GF_INSTALL_PLUGINS=retrodaredevil-wildgraphql-datasource \
     GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=criticalmanufacturing-grpc-datasource
 
 ### Copy CMF plugin to the plugin directory
-RUN mkdir -p /opt/cmf/plugin/criticalmanufacturing-grpc-datasource
-COPY --from=im_node /usr/src/dist/ /opt/cmf/plugin/criticalmanufacturing-grpc-datasource
-COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /opt/cmf/plugin/criticalmanufacturing-grpc-datasource/
-RUN chmod u+x /opt/cmf/plugin/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
+RUN mkdir -p /data/grafana/plugins/criticalmanufacturing-grpc-datasource
+COPY --from=im_node /usr/src/dist/ /data/grafana/plugins/criticalmanufacturing-grpc-datasource
+COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /data/grafana/plugins/criticalmanufacturing-grpc-datasource/
+RUN chmod u+x /data/grafana/plugins/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
+RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install retrodaredevil-wildgraphql-datasource
 
 ###################### HANDLING CMF SPECIFIC DATA - END ######################
 
@@ -288,6 +289,6 @@ USER "$GF_UID"
 
 ENTRYPOINT /usr/share/CmfEntrypoint/CmfEntrypoint "/bin/sh /run.sh" \
        --process-secrets \
-       --exec-script "mkdir /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource; cp -rf /opt/cmf/plugin/criticalmanufacturing-grpc-datasource /var/lib/grafana/plugins" \
+       --exec-script "mkdir -p /var/lib/grafana/plugins/criticalmanufacturing-grpc-datasource; cp -rf /opt/cmf/plugin/criticalmanufacturing-grpc-datasource /var/lib/grafana/plugins" \
        --layer="grafana" \
        --target-directory="/etc/grafana/provisioning"
