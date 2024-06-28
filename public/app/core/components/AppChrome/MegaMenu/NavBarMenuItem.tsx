@@ -103,7 +103,7 @@ const getStyles = (theme: GrafanaTheme2, isActive: Props['isActive'], isChild: P
     width: '100%',
     '&:hover, &:focus-visible': {
       ...(isChild && {
-        background: theme.colors.emphasize(theme.colors.background.primary, 0.03),
+        background: theme.colors.cm.hover,
       }),
       textDecoration: 'underline',
       color: theme.colors.cm.text,

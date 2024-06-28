@@ -173,6 +173,7 @@ class DarkColors implements ThemeColorsBase<Partial<ThemeRichColor>> {
     icons: palette.cmDarkIcons,
     navBar: palette.cmDarkNavBar,
     text: palette.cmDarkText,
+    hover: alpha(palette.cmDarkText, 0.05),
   }
 
   contrastThreshold = 3;
@@ -262,6 +263,7 @@ class LightColors implements ThemeColorsBase<Partial<ThemeRichColor>> {
     icons: palette.cmLightIcons,
     navBar: palette.cmLightNavBar,
     text: palette.cmLightText,
+    hover: alpha(palette.cmLightText, 0.05),
   }
 
   contrastThreshold = 3;
