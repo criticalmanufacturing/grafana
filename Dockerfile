@@ -10,7 +10,7 @@ ARG JS_SRC=js-builder
 
 ################### PLUGIN COMPILATION - Start ###################
 
-FROM golang:alpine3.16 as im_go
+FROM proxy.criticalmanufacturing.io/golang:alpine3.16 as im_go
 
 USER root
 
@@ -23,7 +23,7 @@ RUN go "build" "-o" "dist/cmf_backend_grpc_plugin_linux_amd64" "-ldflags" "-w -s
 
 ### Compiling frontend
 
-FROM ubuntu:20.04 as im_node
+FROM proxy.criticalmanufacturing.io/ubuntu:20.04 as im_node
 USER root
 
 WORKDIR /usr/src
