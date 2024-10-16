@@ -234,8 +234,8 @@ RUN mkdir -p /data/grafana/plugins/criticalmanufacturing-grpc-datasource
 COPY --from=im_node /usr/src/dist/ /data/grafana/plugins/criticalmanufacturing-grpc-datasource
 COPY --from=im_go /go/src/dist/cmf_backend_grpc_plugin_linux_amd64 /data/grafana/plugins/criticalmanufacturing-grpc-datasource/
 RUN chmod u+x /data/grafana/plugins/criticalmanufacturing-grpc-datasource/cmf_backend_grpc_plugin_linux_amd64
-RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install retrodaredevil-wildgraphql-datasource
-RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install volkovlabs-echarts-panel
+RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install retrodaredevil-wildgraphql-datasource 1.2.1
+RUN grafana-cli --pluginsDir "/data/grafana/plugins" plugins install volkovlabs-echarts-panel 6.4.1
 
 ###################### HANDLING CMF SPECIFIC DATA - END ######################
 
