@@ -254,30 +254,17 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 # License
 COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /licenses /licenses
 # CmfEntrypoint
-# COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
-
-# COPY ./cmf.pem /etc/ssl/certs/
-COPY ./cmf-dev.gpg.key /opt/public.gpg.key
+COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
 
 RUN apt-get update \
     && apt-get install -y gnupg wget \
-    && apt-key add /opt/public.gpg.key \
     && wget http://ftp.de.debian.org/debian/pool/main/i/icu/libicu67_67.1-7_amd64.deb \
     && dpkg -i libicu67_67.1-7_amd64.deb \
     && rm libicu67_67.1-7_amd64.deb \
     && wget http://ftp.de.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_amd64.deb \
     && dpkg -i libssl1.1_1.1.1w-0+deb11u1_amd64.deb \
     && rm libssl1.1_1.1.1w-0+deb11u1_amd64.deb \
-    && echo 'deb https://dev.criticalmanufacturing.io/repository/apt-hosted/ debian main' >> /etc/apt/sources.list.d/cmf.list \
-    && apt-get update \
-    && apt-get install -y cmfentrypoint=11.0.0.* \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm /etc/apt/sources.list.d/cmf.list
-
-# Permissions to add custom certificates
-# RUN chmod g+rw -R /usr/local/share/ca-certificates/
-# RUN chmod 644 /etc/ssl/certs/cmf.pem && \
-#    update-ca-certificates
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR $GF_PATHS_HOME
 
