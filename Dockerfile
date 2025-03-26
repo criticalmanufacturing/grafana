@@ -21,7 +21,7 @@ WORKDIR /go/src/grpc
  
 RUN go "build" "-o" "dist/cmf_backend_grpc_plugin_linux_amd64" "-ldflags" "-w -s -extldflags \"-static\" -X 'github.com/grafana/grafana-plugin-sdk-go/build.buildInfoJSON={\"time\":1677258377824,\"version\":\"1.0.0\",\"repo\":\"CMF\",\"branch\":\"Deploy\",\"hash\":\"83d7fe05b465008972bea160643473286f89af9e6\"}' -X 'main.version=1.0.0' -X 'main.branch=Deploy' -X 'main.commit=abcd'" "./pkg"
  
-RUN git clone https://github.com/criticalmanufacturing/grafana-odata-datasource.git /go/src/odata --depth 1
+RUN git clone https://github.com/criticalmanufacturing/grafana-odata-datasource.git /go/src/odata -b product/11.1 --depth 1
 WORKDIR /go/src/odata
  
 ### Compiling backend
@@ -57,7 +57,7 @@ RUN yarn build
 RUN apt install git -y
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
  
-RUN git clone https://github.com/criticalmanufacturing/grafana-odata-datasource.git /usr/src/odata --depth 1
+RUN git clone https://github.com/criticalmanufacturing/grafana-odata-datasource.git /usr/src/odata -b product/11.1 --depth 1
  
 WORKDIR /usr/src/odata
  
