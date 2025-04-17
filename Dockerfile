@@ -251,9 +251,9 @@ USER root
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 # License
-COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /licenses /licenses
+COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base/ubi9:11.0-dev /licenses /licenses
 # CmfEntrypoint
-COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base:ubi9 /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
+COPY --from=dev.criticalmanufacturing.io/criticalmanufacturing/base/ubi9:11.0-dev /usr/share/CmfEntrypoint /usr/share/CmfEntrypoint
 
 RUN apt-get update \
     && apt-get install -y gnupg wget \
