@@ -26,26 +26,6 @@ if [ ! -d "$GF_PATHS_PLUGINS" ]; then
     mkdir "$GF_PATHS_PLUGINS"
 fi
 
-# This custom Grafana image was migrated from using custom Grafana Auth headers
-# to use Generic OAuth authentication.
-# On container start, if a Grafana database already exists, we're removing it
-# once so existing users are recreated with OAuth-compatible identity and role data.
-# The lock file preserves the newly initialized database on subsequent container restarts.
-DATA_DIR="${GF_PATHS_DATA:-/var/lib/grafana}"
-LOCK_FILE="${DATA_DIR}/grafana.db.lock"
-
-if [ ! -f "$LOCK_FILE" ]; then
-    echo "Lock file $LOCK_FILE not found. Removing existing Grafana database..."
-    # Delete SQLite database (grafana.db), rollback journal (grafana.db-journal),
-    # write-ahead log (grafana.db-wal), and shared-memory file (grafana.db-shm).
-    rm -f "${DATA_DIR}/grafana.db" "${DATA_DIR}/grafana.db-journal" \
-        "${DATA_DIR}/grafana.db-wal" "${DATA_DIR}/grafana.db-shm"
-    # Delete the rebuildable unified-search index so it cannot retain stale data.
-    rm -rf "${DATA_DIR}/unified-search"
-    mkdir -p "${DATA_DIR}" 2>/dev/null || true
-    touch "$LOCK_FILE"
-fi
-
 if [ ! -z ${GF_AWS_PROFILES+x} ]; then
     :> "$GF_PATHS_HOME/.aws/credentials"
 

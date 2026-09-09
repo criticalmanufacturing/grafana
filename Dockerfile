@@ -396,6 +396,7 @@ RUN grafana cli --pluginsDir "/data/grafana/plugins" plugins install grafana-cli
 ARG RUN_SH=./packaging/docker/run.sh
 
 COPY ${RUN_SH} /run.sh
+COPY /scripts/cm-db-reset.sh /scripts/cm-db-reset.sh
 
 USER root
 # https://learn.microsoft.com/en-us/dotnet/core/runtime-config/globalization
@@ -425,6 +426,7 @@ USER "$GF_UID"
 ENTRYPOINT [ "/usr/share/CmfEntrypoint/CmfEntrypoint", \
       "--process-secrets", \
       "--layer=grafana", \
+      "--exec-script", "bash /scripts/cm-db-reset.sh", \
       "--target-directory=/etc/grafana/provisioning" ,\
       "--" ,\
       "/run.sh" ]
