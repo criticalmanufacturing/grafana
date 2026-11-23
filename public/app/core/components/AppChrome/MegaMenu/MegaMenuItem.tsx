@@ -372,6 +372,7 @@ const getStyles = (theme: GrafanaTheme2, visualRefreshEnabled: boolean) => ({
   }),
   collapseButton: css({
     margin: 0,
+    color: theme.colors.cm.text,
   }),
   collapsibleSectionWrapper: css({
     alignItems: 'center',
@@ -392,7 +393,7 @@ const getStyles = (theme: GrafanaTheme2, visualRefreshEnabled: boolean) => ({
     gap: theme.spacing(0.5),
   }),
   hasActiveChild: css({
-    color: theme.colors.text.primary,
+    color: theme.colors.cm.text,
   }),
   labelWrapperWithIcon: css({
     minWidth: theme.spacing(7),
@@ -404,7 +405,7 @@ const getStyles = (theme: GrafanaTheme2, visualRefreshEnabled: boolean) => ({
     flexDirection: 'column',
   }),
   emptyMessage: css({
-    color: theme.colors.text.secondary,
+    color: theme.colors.cm.text,
     fontStyle: 'italic',
     padding: theme.spacing(1, 1.5, 1, 7),
   }),

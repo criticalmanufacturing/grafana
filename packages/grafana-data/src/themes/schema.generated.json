@@ -575,6 +575,24 @@
           },
           "additionalProperties": false
         },
+        "cm": {
+          "type": "object",
+          "properties": {
+            "topBar": {
+              "type": "string"
+            },
+            "icons": {
+              "type": "string"
+            },
+            "navBar": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
         "action": {
           "type": "object",
           "properties": {

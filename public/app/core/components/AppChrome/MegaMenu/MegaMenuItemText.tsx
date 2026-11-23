@@ -218,9 +218,11 @@ const getStyles = (theme: GrafanaTheme2, isActive: Props['isActive'], visualRefr
       // customisation pin); the edit-mode pin and hide controls are always shown.
       '.pin-icon': {
         visibility: 'hidden',
+        color: theme.colors.cm.text,
       },
       '.customise-icon, .visibility-icon': {
         visibility: 'visible',
+        color: theme.colors.cm.text,
       },
       '&:hover, &:focus-within': {
         '.pin-icon': {
@@ -256,7 +258,7 @@ const getStyles = (theme: GrafanaTheme2, isActive: Props['isActive'], visualRefr
     wrapperActive: visualRefreshEnabled ? wrapperActiveVisualRefresh : wrapperActiveOld,
     container: css({
       alignItems: 'center',
-      color: 'inherit',
+      color: theme.colors.cm.text,
       height: '100%',
       position: 'relative',
       flex: 1,
@@ -264,7 +266,7 @@ const getStyles = (theme: GrafanaTheme2, isActive: Props['isActive'], visualRefr
       borderRadius: theme.shape.radius.default,
 
       '&:hover span, &:focus-visible span': {
-        color: theme.colors.text.primary,
+        color: theme.colors.cm.text,
         textDecoration: 'underline',
       },
 

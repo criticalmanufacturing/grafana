@@ -116,7 +116,7 @@ function homeTitleStyles(theme: GrafanaTheme2) {
   return {
     homeTitle: css({
       borderRadius: theme.shape.radius.default,
-      color: theme.colors.text.primary,
+      color: theme.colors.cm.text,
       padding: theme.spacing(0.25, 0.75),
       margin: theme.spacing(0, -0.75),
       textDecoration: 'none',

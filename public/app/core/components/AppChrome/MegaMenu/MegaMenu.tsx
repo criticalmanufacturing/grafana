@@ -156,7 +156,7 @@ export const MegaMenu = memo(
         <>
           <div className={styles.pinnedBox}>
             <div className={styles.pinnedHeading} id={pinnedHeadingId}>
-              <Text variant="bodySmall" color="secondary" weight="medium">
+              <Text variant="bodySmall" weight="medium">
                 {pinnedListLabel}
               </Text>
               <div className={styles.pinnedHeadingLine} />
@@ -335,7 +335,7 @@ const getStyles = (theme: GrafanaTheme2, visualRefreshEnabled: boolean) => {
     // still lines up.
     pinnedHeading: css({
       alignItems: 'center',
-      color: theme.colors.text.secondary,
+      color: theme.colors.cm.text,
       display: 'flex',
       gap: theme.spacing(1),
       height: theme.spacing(3.5),
@@ -370,6 +370,7 @@ const getStyles = (theme: GrafanaTheme2, visualRefreshEnabled: boolean) => {
     dockMenuButton: css({
       display: 'none',
       marginLeft: 'auto',
+      color: theme.colors.cm.text,
 
       [theme.breakpoints.up('xl')]: {
         display: 'inline-flex',

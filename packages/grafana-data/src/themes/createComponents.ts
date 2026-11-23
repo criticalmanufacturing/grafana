@@ -335,7 +335,8 @@ const getBadgeColor = (
   sourceColor: string,
   mode: ThemeColors['mode']
 ): ThemeComponents['badge'][keyof ThemeComponents['badge']] => {
-  const BADGE_TEXT_ADJUSTMENT = mode === 'dark' ? 15 : -25;
+  // CM MES themes: light mode also lightens badge text (instead of darkening it), matching dark mode
+  const BADGE_TEXT_ADJUSTMENT = 15;
   const background = `hsl(from ${sourceColor} h s l / 0.15)`;
   const border = `hsl(from ${sourceColor} h s l / 0.25)`;
   const text = `hsl(from ${sourceColor} h s calc(l + ${BADGE_TEXT_ADJUSTMENT}))`;
